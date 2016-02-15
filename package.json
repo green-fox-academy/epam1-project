@@ -23,6 +23,7 @@
     "gulp-jasmine": "^2.2.1",
     "gulp-jshint": "^2.0.0",
     "gulp-karma": "0.0.5",
+    "gulp-sass": "^2.2.0",
     "gulp-test": "0.0.6",
     "gulp-watch": "^4.3.5",
     "jasmine": "^2.4.1",
