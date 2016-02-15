@@ -33,7 +33,7 @@ gulp.task('lint', function () {
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('Backendtest', function() {
+gulp.task('backendTest', function() {
   return gulp.src('spec/backendSpec/*.js')
     .pipe(jasmine());
 });
