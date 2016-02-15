@@ -1,5 +1,6 @@
 // Karma configuration
 // Generated on Mon Feb 15 2016 10:39:10 GMT+0100 (Közép-európai téli idő )
+'use strict';
 
 module.exports = function(config) {
   config.set({
@@ -17,6 +18,7 @@ module.exports = function(config) {
     files: [
       'node_modules/angular/angular.min.js',
       'node_modules/angular-mocks/angular-mocks.js',
+      'public/js/*.js',
       'spec/frontendSpec/*.js'
     ],
 
@@ -52,7 +54,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // start these browsers
