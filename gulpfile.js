@@ -6,6 +6,7 @@ var stylish = require('jshint-stylish');
 var watch = require('gulp-watch');
 var batch = require('gulp-batch');
 var jasmine = require('gulp-jasmine');
+var sass = require('gulp-sass');
 var Server = require('karma').Server;
 
 gulp.task('default', function () {
@@ -32,7 +33,7 @@ gulp.task('lint', function () {
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('test', function() {
+gulp.task('Backendtest', function() {
   return gulp.src('spec/backendSpec/*.js')
     .pipe(jasmine());
 });
@@ -42,4 +43,14 @@ gulp.task('frontendTest', function (done) {
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
   }, done).start();
+});
+
+gulp.task('sass', function () {
+  return gulp.src('./public/style/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./public/style/.css'));
+});
+
+gulp.task('sass:watch', function () {
+  gulp.watch('./sass/**/*.scss', ['sass']);
 });
