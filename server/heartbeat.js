@@ -1,6 +1,6 @@
 'use strict';
 
-function heartbeatController(query) {
+function HeartbeatController(query) {
   var _this = this;
   this.getStatus = function(request, response) {
     query.get(function (err, result) {
@@ -21,4 +21,4 @@ function heartbeatController(query) {
   };
 }
 
-module.exports = heartbeatController;
+module.exports = HeartbeatController;
