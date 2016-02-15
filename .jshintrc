@@ -1,0 +1,30 @@
+{
+ "browser": true,
+ "jquery": true,
+ "node": true,
+ "camelcase": true,
+ "eqeqeq": true,
+ "indent": 2,
+ "latedef": "nofunc",
+ "maxlen": 120,
+ "newcap": true,
+ "quotmark": "single",
+ "strict": true,
+ "undef": true,
+ "unused": true,
+ "eqnull": true,
+ "esnext": true,
+ "expr": true,
+ "globals": {
+   "angular": true,
+   "it": true,
+   "expect": true,
+   "describe": true,
+   "before": true,
+   "after": true,
+   "beforeEach": true,
+   "afterEach": true,
+   "inject": true,
+   "spyOn": true
+ }
+}
