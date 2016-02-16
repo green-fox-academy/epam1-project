@@ -37,6 +37,7 @@
     "supertest": "^1.2.0"
   },
   "dependencies": {
+    "angular-ui-router": "^0.2.18",
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "npm": "^3.7.2",
