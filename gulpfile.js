@@ -7,33 +7,39 @@ var watch = require('gulp-watch');
 var batch = require('gulp-batch');
 var jasmine = require('gulp-jasmine');
 var sass = require('gulp-sass');
+var jscs = require('gulp-jscs');
 var Server = require('karma').Server;
+
+var sourceFiles = [
+  './public/*.js',
+  './server/*.js',
+  './spec/backendSpec/*.js',
+  './spec/frontendSpec/*.js',
+];
 
 gulp.task('default', function () {
   console.log('Watching files for changes... It is running, dont worry mate!');
-  watch([
-    './public/*.js',
-    './server/*.js',
-    './spec/backendSpec/*.js',
-    './spec/frontendSpec/*.js'],
+  watch(sourceFiles,
       batch(function (events, done) {
     gulp.start('lint', done);
-    gulp.start('test', done);
+    gulp.start('jscsLint', done);
   }));
 });
 
 gulp.task('lint', function () {
-  return gulp.src([
-    './public/*.js',
-    './server/*.js',
-    './spec/backendSpec/*.js',
-    './spec/frontendSpec/*.js'])
+  return gulp.src(sourceFiles)
     .pipe(jshint())
     .pipe(jshint.reporter(stylish))
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('backendTest', function() {
+gulp.task('jscsLint', function () {
+  return gulp.src(sourceFiles)
+  .pipe(jscs())
+  .pipe(jscs.reporter());
+});
+
+gulp.task('backendTest', function () {
   return gulp.src('spec/backendSpec/*.js')
     .pipe(jasmine());
 });
@@ -41,7 +47,7 @@ gulp.task('backendTest', function() {
 gulp.task('frontendTest', function (done) {
   new Server({
     configFile: __dirname + '/karma.conf.js',
-    singleRun: true
+    singleRun: true,
   }, done).start();
 });
 
