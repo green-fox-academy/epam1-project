@@ -8,11 +8,11 @@ function Connection() {
   var _this = this;
   this.log = new Log();
   this.sendQuery = function (query, callback) {
-    pg.connect(config.DATABASE_URL, function(connectError, client, done) {
+    pg.connect(config.DATABASE_URL, function (connectError, client, done) {
       if (connectError) {
         callback(connectError);
       } else {
-        client.query(query,function (queryError, result) {
+        client.query(query, function (queryError, result) {
           done();
           _this.log.logQuery(query);
           callback(queryError, result);
