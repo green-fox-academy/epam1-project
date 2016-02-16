@@ -5,7 +5,7 @@ function Log() {
     var parts = [
       new Date(),
       req.method,
-      req.originalUrl
+      req.originalUrl,
     ];
     console.log(parts.join(' '));
     next();
@@ -14,7 +14,7 @@ function Log() {
   this.logQuery = function (query) {
     var parts = [
       new Date(),
-      query
+      query,
     ];
     console.log(parts.join(' '));
   };
@@ -23,7 +23,7 @@ function Log() {
     var parts = [
       new Date(),
       response,
-      status
+      status,
     ];
     console.log(parts.join(' '));
   };
