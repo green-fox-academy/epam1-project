@@ -20,7 +20,7 @@ function HeartbeatController(query) {
         _this.log.logResponse(JSON.stringify(result.rows), 200);
         response.status(200).json(result.rows);
       } else {
-        _this.log.logResponse(JSON.stringify(result.rows), 500);
+        _this.log.logWarning('No available content', 500);
         response.status(500).json(result.rows);
       }
     }
