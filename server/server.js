@@ -4,8 +4,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 
-var HeartQuery = require('./heartbeat-query.js');
-var HeartBeat = require('./heartbeat.js');
+var HeartQuery = require('./heartbeat/heartbeat-query.js');
+var HeartBeat = require('./heartbeat/heartbeat.js');
 var Log = require('./log.js');
 
 function createServer(connection) {
