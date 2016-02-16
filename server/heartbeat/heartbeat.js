@@ -1,6 +1,6 @@
 'use strict';
 
-var Log = require('./log.js');
+var Log = require('../log.js');
 
 function HeartbeatController(query) {
   var _this = this;
