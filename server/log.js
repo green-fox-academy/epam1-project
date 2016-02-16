@@ -3,6 +3,7 @@
 function Log() {
   this.logRequest = function (req, res, next) {
     var parts = [
+      'info',
       new Date(),
       req.method,
       req.originalUrl,
@@ -13,6 +14,7 @@ function Log() {
 
   this.logQuery = function (query) {
     var parts = [
+      'info',
       new Date(),
       query,
     ];
@@ -21,6 +23,7 @@ function Log() {
 
   this.logResponse = function (response, status) {
     var parts = [
+      'info',
       new Date(),
       response,
       status,
@@ -28,11 +31,22 @@ function Log() {
     console.log(parts.join(' '));
   };
 
+  this.logWarning = function (message, status) {
+    var parts = [
+      'warn',
+      new Date(),
+      message,
+      status,
+    ];
+    console.log(parts.join(' '));
+  };
+
   this.logError = function (error, status) {
     var parts = [
+      'error',
       new Date(),
       error,
-      status
+      status,
     ];
     console.log(parts.join(' '));
   };
