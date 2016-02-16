@@ -7,6 +7,6 @@ var connection = new Connection();
 
 var app = createServer(connection);
 
-app.listen(config.DEFAULT_PORT, function() {
-	console.log('Listening on port ' + config.DEFAULT_PORT + '...');
+app.listen(config.DEFAULT_PORT, function () {
+  console.log('Listening on port ' + config.DEFAULT_PORT + '...');
 });

@@ -1,10 +1,10 @@
 'use strict';
 
-var Log = require('../log.js');
+var Logger = require('../log.js');
 
 function HeartbeatController(query) {
   var _this = this;
-  this.log = new Log();
+  this.logger = new Logger();
   this.getStatus = function (request, response) {
     query.get(function (err, result) {
       _this.handleResponse(err, result, response);
@@ -13,15 +13,15 @@ function HeartbeatController(query) {
 
   this.handleResponse = function (err, result, response) {
     if (err) {
-      _this.log.logError(JSON.stringify({ 'Connection Error:': err }), 500);
-      response.status(500).json({ 'Connection Error:': err });
+      _this.logger.message('error', 'DATABASE CONNECTION ERROR');
+      response.status(503).json({ 'Connection Error:': err });
     } else {
-      if (result.rows.length > 0) {
-        _this.log.logResponse(JSON.stringify(result.rows), 200);
-        response.status(200).json(result.rows);
+      if (result.rows.length === 0) {
+        _this.logger.message('warn', 'ITEM NOT FOUND IN DATABASE');
+        response.status(404).json(result.rows);
       } else {
-        _this.log.logResponse(JSON.stringify(result.rows), 500);
-        response.status(500).json(result.rows);
+        _this.logger.message('info', 'SUCCESSFUL DATABASE QUERY');
+        response.status(200).json(result.rows);
       }
     }
   };

@@ -1,40 +1,37 @@
 'use strict';
 
+var config = require('./config.js');
+
 function Log() {
+  var _this = this;
+  this.levels = ['debug', 'info', 'warn', 'error'];
+  this.loggingLevel = config.DEFAULT_LOGGING_LEVEL;
+
   this.logRequest = function (req, res, next) {
-    var parts = [
-      new Date(),
-      req.method,
-      req.originalUrl,
-    ];
-    console.log(parts.join(' '));
+    _this.createLogEntry({
+      level: 'info',
+      name: 'NEW REQUEST',
+      method: req.method,
+      url: req.originalUrl,
+    });
     next();
   };
 
-  this.logQuery = function (query) {
-    var parts = [
-      new Date(),
-      query,
-    ];
-    console.log(parts.join(' '));
+  this.message = function (level, message) {
+    _this.createLogEntry({
+      level: level,
+      message: message,
+    });
   };
 
-  this.logResponse = function (response, status) {
-    var parts = [
-      new Date(),
-      response,
-      status,
-    ];
-    console.log(parts.join(' '));
+  this.createLogEntry = function (messages) {
+    if (_this.isValidLevel(messages.level)) {
+      console.log(JSON.stringify(messages));
+    }
   };
 
-  this.logError = function (error, status) {
-    var parts = [
-      new Date(),
-      error,
-      status
-    ];
-    console.log(parts.join(' '));
+  this.isValidLevel = function (level) {
+    return _this.levels.indexOf(level) >= _this.levels.indexOf(_this.loggingLevel);
   };
 }
 

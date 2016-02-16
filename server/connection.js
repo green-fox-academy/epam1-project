@@ -2,11 +2,11 @@
 
 var pg = require('pg');
 var config = require('./config.js');
-var Log = require('./log.js');
+var Logger = require('./log.js');
 
 function Connection() {
   var _this = this;
-  this.log = new Log();
+  this.logger = new Logger();
   this.sendQuery = function (query, callback) {
     pg.connect(config.DATABASE_URL, function (connectError, client, done) {
       if (connectError) {
@@ -14,7 +14,7 @@ function Connection() {
       } else {
         client.query(query, function (queryError, result) {
           done();
-          _this.log.logQuery(query);
+          _this.logger.message('info', `NEW DATABASE QUERY = ${query}`);
           callback(queryError, result);
         });
       }
