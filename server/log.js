@@ -27,6 +27,15 @@ function Log() {
     ];
     console.log(parts.join(' '));
   };
+
+  this.logError = function (error, status) {
+    var parts = [
+      new Date(),
+      error,
+      status
+    ];
+    console.log(parts.join(' '));
+  };
 }
 
 module.exports = Log;

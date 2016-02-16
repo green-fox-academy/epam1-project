@@ -13,12 +13,14 @@ function HeartbeatController(query) {
 
   this.handleResponse = function (err, result, response) {
     if (err) {
+      _this.log.logError(JSON.stringify({ 'Connection Error:': err }), 500);
       response.status(500).json({ 'Connection Error:': err });
-    }	else {
+    } else {
       if (result.rows.length > 0) {
         _this.log.logResponse(JSON.stringify(result.rows), 200);
         response.status(200).json(result.rows);
       } else {
+        _this.log.logResponse(JSON.stringify(result.rows), 500);
         response.status(500).json(result.rows);
       }
     }
