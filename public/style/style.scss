@@ -1,6 +1,95 @@
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #333;
+$lightgrey: #E6E6E6;
+$darkgrey: #4A4A4A;
+$blue: #39C2D7;
+
+$fontSizeLarge: 26px;
+$fontSize: 16px;
+
+$headerHeight: 80px;
+$buttonHeight: 50px;
+$inputHeight: $buttonHeight;
+$inputWidth: 150px;
+
+$borderRadius: 3px;
+
+html {
+  margin: 0px;
+}
+
 body {
-  font: 100% $font-stack;
-  color: $primary-color;
+  margin: auto;
+}
+
+header {
+  background-color: $lightgrey;
+  height: $headerHeight;
+  font-size: $fontSize;
+  font-family: 'Oswald';
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  border-bottom: 1px solid $darkgrey;
+}
+
+h1 {
+  font-size: $fontSizeLarge;
+  color: $darkgrey;
+  margin: 0px;
+}
+
+button {
+  background-color: $blue;
+  color: white;
+  font-size: $fontSize;
+  font-family: 'Oswald';
+  height: $buttonHeight;
+  width: $inputWidth;
+  border-radius: $borderRadius;
+  border-width: 0px;
+}
+
+a, a:visited {
+  color: white;
+  font-style: 'Oswald';
+  text-decoration: none;
+}
+
+.buttons {
+  font-style: 'Oswald';
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+ transform: translate(-50%, -50%);
+}
+
+.registerButton {
+  order: 1;
+}
+
+.middle {
+  font-style: 'Oswald';
+  font-size: 18px;
+  color: $darkgrey;
+  order: 2;
+  padding: 15px 30px;
+}
+
+.loginButton {
+  order: 3;
+}
+
+.logo {
+  padding-top: 25px;
+  padding-left: 20px;
+  order: 1;
+}
+
+.title {
+  order: 2;
+  padding-top: 21px;
+  padding-left: 20px;
 }

@@ -58,5 +58,6 @@ gulp.task('sass', function () {
 });
 
 gulp.task('sass:watch', function () {
-  gulp.watch('./sass/**/*.scss', ['sass']);
+  console.log('i am watching your sass beach');
+  gulp.watch('./public/style/*.scss', ['sass']);
 });
