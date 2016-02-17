@@ -11,7 +11,7 @@ function createLog(loggingLevel, loggerFunction, InnerDate) {
   function message(level, message) {
     createLogEntry({
       level: level,
-      date: new InnerDate(),
+      date: new InnerDate().toISOString(),
       message: message,
     });
   }
@@ -28,6 +28,7 @@ function createLog(loggingLevel, loggerFunction, InnerDate) {
 
   return {
     message: message,
+    isValidLevel: isValidLevel,
   };
 }
 
