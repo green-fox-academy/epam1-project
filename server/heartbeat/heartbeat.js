@@ -1,10 +1,10 @@
 'use strict';
 
-var Logger = require('../log.js');
+var logger = require('../log.js')();
 
 function HeartbeatController(query) {
   var _this = this;
-  this.logger = new Logger();
+  this.logger = logger;
   this.getStatus = function (request, response) {
     query.get(function (err, result) {
       _this.handleResponse(err, result, response);
