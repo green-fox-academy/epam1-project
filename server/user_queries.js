@@ -4,7 +4,7 @@ var SQL = require('sql-template-strings');
 
 function UserQueries(connection) {
 
-  this.registrateUser = function (params, callback) {
+  this.registNewUser = function (params, callback) {
     connection.sendQuery(
       SQL`
       INSERT INTO users (email, password, role)

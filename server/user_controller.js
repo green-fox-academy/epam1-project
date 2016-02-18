@@ -6,7 +6,7 @@ function UserController(queries) {
   var _this = this;
   this.logger = logger;
   this.registrateUser = function (request, response) {
-    queries.registrateUser(request.body, function (err, result) {
+    queries.registNewUser(request.body, function (err, result) {
       _this.handleResponse(err, result, response);
     });
   };

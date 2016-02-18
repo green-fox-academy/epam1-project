@@ -14,7 +14,7 @@ function Connection() {
       } else {
         client.query(query, function (queryError, result) {
           done();
-          _this.logger.message('info', `NEW DATABASE QUERY = ${query}`);
+          _this.logger.message('info', `NEW DATABASE QUERY`);
           callback(queryError, result);
         });
       }
