@@ -21,7 +21,7 @@ describe('User query', function () {
   describe('test registrateUser query', function () {
     it('tracks all the arguments of its calls', function () {
       var params = { email: 'test@test.com', password: '1234' };
-      userQueries.registrateUser(params, callback);
+      userQueries.registNewUser(params, callback);
 
       expect(connection.sendQuery).toHaveBeenCalledWith(SQL`
       INSERT INTO users (email, password, role)
