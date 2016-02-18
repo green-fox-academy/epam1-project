@@ -37,6 +37,18 @@ h1 {
   margin: 0px;
 }
 
+.logo {
+  padding-top: 25px;
+  padding-left: 20px;
+  order: 1;
+}
+
+.title {
+  order: 2;
+  padding-top: 21px;
+  padding-left: 20px;
+}
+
 button {
   background-color: $blue;
   color: white;
@@ -46,12 +58,6 @@ button {
   width: $inputWidth;
   border-radius: $borderRadius;
   border-width: 0px;
-}
-
-a, a:visited {
-  color: white;
-  font-style: 'Oswald';
-  text-decoration: none;
 }
 
 .buttons {
@@ -82,14 +88,36 @@ a, a:visited {
   order: 3;
 }
 
-.logo {
-  padding-top: 25px;
-  padding-left: 20px;
-  order: 1;
+a, a:visited {
+  color: white;
+  font-style: 'Oswald';
+  text-decoration: none;
 }
 
-.title {
-  order: 2;
-  padding-top: 21px;
-  padding-left: 20px;
+input {
+  height: $inputHeight;
+  width: 450px;
+  font-size: $fontSize;
+  border-radius: $borderRadius;
+  border-color: $blue;
+  border-style: solid;
+  border-width: 1px;
+  margin: 10px;
+  padding-left: 10px;
+}
+
+.register {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  justify-content: center;
+  -webkit-transform: translate(-50%, -50%);
+ transform: translate(-50%, -50%);
+  width: 500px;
+  text-align: center;
+}
+
+.submitButton {
+  text-align: center;
+  margin-left: 30px;
 }

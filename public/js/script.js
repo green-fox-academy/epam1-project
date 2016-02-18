@@ -7,15 +7,15 @@ myapp.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('frontpage', {
       url: '/',
-      templateUrl: "../templates/index.html"
+      templateUrl: '../templates/frontpage.html',
     })
 
     .state('register', {
       url: '/register',
-      templateUrl: "../templates/register.html"
+      templateUrl: '../templates/register.html',
     })
     .state('login', {
       url: '/login',
-      templateUrl: "../templates/login.html"
+      templateUrl: '../templates/login.html',
     });
 });
