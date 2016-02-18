@@ -1,8 +1,8 @@
-<div class="register">
-  <form class="registerForm">
-    <input type="email" placeholder="Type your email address">
-    <input type="text" placeholder="Pick a password">
-    <button class="submitButton"> REGISTER </button>
+<div class="register" ng-controller="SubmitCtrl">
+  <form class="registerForm" ng-submit="addUser()">
+    <input type="email" placeholder="Type your email address" ng-model="email" required>
+    <input type="password" placeholder="Pick a password" ng-model="password" required>
+    <button class="submitButton" type="submit"> REGISTER </button>
     <a ui-sref="login"> Log in </a>
   </form>
 </div>
