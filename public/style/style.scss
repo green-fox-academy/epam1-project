@@ -60,6 +60,10 @@ button {
   border-width: 0px;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .buttons {
   font-style: 'Oswald';
   text-align: center;
