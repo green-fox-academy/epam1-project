@@ -4,6 +4,7 @@ $blue: #39C2D7;
 
 $fontSizeLarge: 26px;
 $fontSize: 16px;
+$fontFamily: 'Oswald';
 
 $headerHeight: 80px;
 $buttonHeight: 50px;
@@ -24,7 +25,7 @@ header {
   background-color: $lightgrey;
   height: $headerHeight;
   font-size: $fontSize;
-  font-family: 'Oswald';
+  font-family: $fontFamily;
   margin: 0px;
   padding: 0px;
   display: flex;
@@ -51,29 +52,33 @@ h1 {
 
 button {
   background-color: $blue;
+  border: {
+    radius: $borderRadius;
+    width: 0px;
+  };
   color: white;
-  font-size: $fontSize;
-  font-family: 'Oswald';
+  font: {
+    family: $fontFamily;
+    size: $fontSize;
+  };
   height: $buttonHeight;
   width: $inputWidth;
-  border-radius: $borderRadius;
-  border-width: 0px;
+  &:hover {cursor: pointer;}
 }
 
-button:hover {
-  cursor: pointer;
+.buttons, .register {
+  justify-content: center;
+  left: 50%;
+  position: fixed;
+  text-align: center;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .buttons {
-  font-style: 'Oswald';
-  text-align: center;
+  font-style: $fontFamily;
   display: flex;
-  justify-content: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
- transform: translate(-50%, -50%);
 }
 
 .registerButton {
@@ -81,9 +86,11 @@ button:hover {
 }
 
 .middle {
-  font-style: 'Oswald';
-  font-size: 18px;
   color: $darkgrey;
+  font: {
+    style: $fontFamily;
+    size: 18px;
+  };
   order: 2;
   padding: 15px 30px;
 }
@@ -94,31 +101,26 @@ button:hover {
 
 a, a:visited {
   color: white;
-  font-style: 'Oswald';
+  font-style: $fontFamily;
   text-decoration: none;
 }
 
 input {
-  height: $inputHeight;
-  width: 450px;
+  border: {
+    radius: $borderRadius;
+    color: $blue;
+    style: solid;
+    width: 1px;
+  };
   font-size: $fontSize;
-  border-radius: $borderRadius;
-  border-color: $blue;
-  border-style: solid;
-  border-width: 1px;
+  height: $inputHeight;
   margin: 10px;
   padding-left: 10px;
+  width: 450px;
 }
 
 .register {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  justify-content: center;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
   width: 500px;
-  text-align: center;
 }
 
 .submitButton {
@@ -136,24 +138,28 @@ input {
 
 .error-msg {
   color: white;
-  font-family: 'Oswald';
+  font-family: $fontFamily;
   padding-top: 10px;
 }
 
 .welcome-page {
-  background-image: url('https://www.epam.com/content/dam/epam/careers/locations/Hungary_A-Spot.jpg.transform/resize_w_1200/image.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: {
+    image: url('https://www.epam.com/content/dam/epam/careers/locations/Hungary_A-Spot.jpg.transform/resize_w_1200/image.jpg');
+    size: cover;
+    repeat: no-repeat;
+  };
   height: calc(100vh - 81px);
   width: 100%;
 }
 
 .welcome-page-msg-container {
-  position: absolute;
-  top: 300px;
-  left: 350px;
   color: white;
-  font-size: $fontSizeLarge;
-  font-family: 'Oswald';
+  font: {
+    family: $fontFamily;
+    size: $fontSizeLarge;
+  };
+  left: 350px;
+  position: absolute;
   text-transform: uppercase;
+  top: 300px;
 }
