@@ -116,7 +116,7 @@ input {
   left: 50%;
   justify-content: center;
   -webkit-transform: translate(-50%, -50%);
- transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   width: 500px;
   text-align: center;
 }
@@ -124,6 +124,20 @@ input {
 .submitButton {
   text-align: center;
   margin-left: 30px;
+}
+
+.error-msg-container {
+  background-color: #ED4040;
+  border-radius: $borderRadius;
+  margin: 0px 20px 10px 20px;
+  height: 50px;
+  width: 460px;
+}
+
+.error-msg {
+  color: white;
+  font-family: 'Oswald';
+  padding-top: 10px;
 }
 
 .welcome-page {
