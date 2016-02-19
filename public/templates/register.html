@@ -1,6 +1,6 @@
 <div class="register" ng-controller="SubmitCtrl">
   <form class="registerForm" ng-submit="addUser()">
-    <div ng-model="Error">{{Error}}</div>
+    <div ng-show="Error">{{Error}}</div>
     <input type="email" placeholder="Type your email address" ng-model="email" required>
     <input type="password" placeholder="Pick a password" ng-model="password" required>
     <button class="submitButton" type="submit"> REGISTER </button>
