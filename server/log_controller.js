@@ -3,17 +3,19 @@
 var logger = require('./log.js')();
 
 function LogController() {
-  var _this = this;
-  this.logger = logger;
 
   this.logRequest = function (req, res, next) {
-    _this.logger.message('info', `NEW REQUEST, method=${req.method}, url=${req.originalUrl}`);
+    var logLevel = 'info';
+    var logMessage = `NEW REQUEST, method=${req.method}, url=${req.originalUrl}`;
+    logger.message(logLevel, logMessage);
     next();
   };
 
   this.logFrontendEvent = function (req, res) {
-    _this.logger.message(`${req.body.level}`, `NEW FRONTEND EVENT`);
-    res.status(200).json({ 'log:': 'OK' });
+    var logLevel = req.body.level;
+    var logMessage = `NEW FRONTEND EVENT, ROUTE CHANGED TO: ${req.body.toState}`;
+    logger.message(logLevel, logMessage);
+    res.status(200).json({ 'Logging:': 'Success' });
   };
 }
 
