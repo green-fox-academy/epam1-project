@@ -1,14 +1,15 @@
 'use strict';
 
-angular.module('myapp').factory('users', function ($http, $state) {
+angular.module('myapp').factory('users', function ($http) {
   var url = '/api/register';
 
-  function addNewUser(newUser, errorCb) {
-    $http.post(url, newUser).then(function () {
-      $state.go('home');
+  function addNewUser(newUser, handleResponse) {
+    $http.post(url, newUser).then(function (response) {
+      handleResponse(response);
+
     }, function (error) {
 
-      errorCb(error);
+      handleResponse(error);
     });
   }
 
