@@ -66,7 +66,7 @@ button {
   &:hover {cursor: pointer;}
 }
 
-.buttons, .register {
+.buttons, .register, .login {
   justify-content: center;
   left: 50%;
   position: fixed;
@@ -100,9 +100,13 @@ button {
 }
 
 a, a:visited {
-  color: white;
-  font-style: $fontFamily;
   text-decoration: none;
+}
+
+.formlinks {
+  color: $blue;
+  font-family: $fontFamily;
+  margin-left: 30px;
 }
 
 input {
@@ -119,7 +123,7 @@ input {
   width: 450px;
 }
 
-.register {
+.register, .login {
   width: 500px;
 }
 
