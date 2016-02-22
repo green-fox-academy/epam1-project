@@ -23,6 +23,10 @@ function UserQueries(connection) {
       callback
     );
   };
+
+  this.getAllUserFromDB = function (callback) {
+    connection.sendQuery('SELECT * FROM USERS', callback);
+  };
 }
 
 module.exports = UserQueries;
