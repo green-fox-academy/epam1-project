@@ -43,6 +43,7 @@
     "npm": "^3.7.2",
     "path": "^0.12.7",
     "pg": "^4.4.4",
-    "sql-template-strings": "^1.1.2"
+    "sql-template-strings": "^1.1.2",
+    "newrelic": "^1.25.3"
   }
 }
