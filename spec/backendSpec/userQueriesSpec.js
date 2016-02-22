@@ -24,9 +24,9 @@ describe('User query', function () {
       userQueries.registNewUser(params, callback);
 
       expect(connection.sendQuery).toHaveBeenCalledWith(SQL`
-      INSERT INTO users (email, password, role)
-      VALUES (${params.email}, ${params.password}, 'admin')
-      RETURNING id, email, role`,
+      INSERT INTO users (email, password)
+      VALUES (${params.email}, ${params.password})
+      RETURNING id, email, admin`,
       callback);
     });
   });
