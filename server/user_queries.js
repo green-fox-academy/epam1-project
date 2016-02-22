@@ -13,6 +13,16 @@ function UserQueries(connection) {
       callback
     );
   };
+
+  this.updateUserAdminStatus = function (params, callback) {
+    connection.sendQuery(
+      SQL`
+      UPDATE users SET admin = ${params.admin}
+      WHERE email = ${params.email}
+      RETURNING email, admin`,
+      callback
+    );
+  };
 }
 
 module.exports = UserQueries;

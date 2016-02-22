@@ -27,6 +27,7 @@ function createServer(connection) {
 
   app.get('/heartbeat', heartController.getStatus);
   app.post('/api/register', userController.registerUser);
+  app.put('/api/users', userController.updateUserAdmin);
   app.post('/api/log', logController.logFrontendEvent);
 
   return app;

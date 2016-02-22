@@ -11,6 +11,12 @@ function UserController(queries) {
     });
   };
 
+  this.updateUserAdmin = function (request, response) {
+    queries.updateUserAdminStatus(request.body, function (err, result) {
+      _this.handleResponse(err, result, response);
+    });
+  };
+
   this.handleResponse = function (err, result, response) {
     if (err) {
       this.logger.message('error', 'DATABASE CONNECTION ERROR');
