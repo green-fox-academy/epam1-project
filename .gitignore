@@ -34,3 +34,6 @@ node_modules
 
 # Others
 .css
+
+# Ignore demo folder
+_demo
