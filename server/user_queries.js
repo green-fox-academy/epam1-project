@@ -24,8 +24,8 @@ function UserQueries(connection) {
     );
   };
 
-  this.getAllUserFromDB = function (callback) {
-    connection.sendQuery('SELECT * FROM USERS', callback);
+  this.getUsers = function (callback) {
+    connection.sendQuery('SELECT id, email, admin FROM USERS', callback);
   };
 }
 

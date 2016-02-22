@@ -18,7 +18,7 @@ function UserController(queries) {
   };
 
   this.getAllUser = function (request, response) {
-    queries.getAllUserFromDB(function (err, result) {
+    queries.getUsers(function (err, result) {
       _this.handleResponse(err, result, response);
     });
   };
