@@ -1,3 +1,9 @@
-<h1>Login</h1>
-<hr/>
-<a ui-sref="login">Show List</a>
+<div class="login" ng-controller="SubmitCtrl">
+  <form class="loginForm" ng-submit="userLogin()">
+    <div ng-show="Error" class="error-msg-container"><p class="error-msg">{{Error}}</p></div>
+    <input type="email" placeholder="Type your email address" ng-model="email" required>
+    <input type="password" placeholder="Type your password" ng-model="password" required>
+    <button class="submitButton" type="submit"> LOG IN </button>
+    <a ui-sref="register"><p class="formlinks"> Register </p></a>
+  </form>
+</div>
