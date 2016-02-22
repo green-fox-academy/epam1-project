@@ -168,7 +168,8 @@ input {
   top: 300px;
 }
 
-table {
+.userListTable {
+  border-collapse: collapse;
   width: 50%;
   text-align: center;
   justify-content: center;
@@ -178,4 +179,13 @@ table {
   top: 30%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+th {
+  border-bottom: 1px solid $darkgrey;
+  padding: 0px;
+}
+
+td {
+  text-align: left;
 }

@@ -1,10 +1,10 @@
-<table>
+<table class="userListTable" ng-controller='ListUsersCtrl'>
   <tr>
     <th>email address</th>
     <th>role</th>
   </tr>
-  <tr>
-    <td>email</td>
-    <td></td>
+  <tr ng-repeat='user in getUsers()'>
+    <td> {{user.email}} </td>
+    <td> {{user.admin}} </td>
   </tr>
 </table>

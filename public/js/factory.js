@@ -27,7 +27,7 @@ angular.module('myapp')
       return listOfUsers;
     }
 
-    function fetchUsers() {
+    function fetchAllUsers() {
       $http.get('/api/users').then(function (response) {
         listOfUsers = response.data;
       });
@@ -37,6 +37,6 @@ angular.module('myapp')
       addNewUser: addNewUser,
       loginUser: loginUser,
       getAllUser: getAllUser,
-      fetchAllUsers: fetchAllUser
+      fetchAllUsers: fetchAllUsers,
     };
   });
