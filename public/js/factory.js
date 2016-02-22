@@ -2,6 +2,7 @@
 
 angular.module('myapp')
   .factory('users', function ($http) {
+    var listOfUsers = [];
 
     function addNewUser(newUser, handleResponse) {
       $http.post('/api/register', newUser).then(function (response) {
@@ -22,8 +23,20 @@ angular.module('myapp')
       });
     }
 
+    function getAllUser() {
+      return listOfUsers;
+    }
+
+    function fetchUsers() {
+      $http.get('/api/users').then(function (response) {
+        listOfUsers = response.data;
+      });
+    }
+
     return {
       addNewUser: addNewUser,
       loginUser: loginUser,
+      getAllUser: getAllUser,
+      fetchAllUsers: fetchAllUser
     };
   });

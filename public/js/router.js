@@ -23,8 +23,12 @@ angular.module('myapp', ['ui.router'])
         url: '/home',
         templateUrl: './templates/home.html',
         pageTitle: 'Home',
-      }
-      );
+      })
+      .state('users', {
+        url: '/users',
+        templateUrl: './templates/users.html',
+        pageTitle: 'Users',
+      });
   })
   .run(function ($rootScope, $http) {
     $rootScope.$on('$stateChangeStart',

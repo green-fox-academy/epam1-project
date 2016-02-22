@@ -33,4 +33,11 @@ angular.module('myapp')
         password: $scope.password,
       }, handleResponse);
     };
+  })
+  .controller('ListCtrl', function ($scope, users) {
+    $scope.getUsers = function () {
+      return users.getAllUser();
+    };
+
+    users.fetchAllUser();
   });
