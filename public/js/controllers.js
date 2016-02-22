@@ -1,12 +1,24 @@
 'use strict';
 
 angular.module('myapp')
-  .controller('SubmitCtrl', function ($scope, $state, users) {
+  .controller('RegisterCtrl', function ($scope, $state, users) {
     $scope.addUser = function () {
-      var user = {
+      var handleResponse = function (response) {
+        if (response.status === 200) {
+          $state.go('home');
+        } else {
+          $scope.Error = response.statusText;
+        }
+      };
+
+      users.addNewUser({
         email: $scope.email,
         password: $scope.password,
-      };
+      }, handleResponse);
+    };
+  })
+  .controller('LogInCtrl', function ($scope, $state, users) {
+    $scope.userLogin = function () {
 
       var handleResponse = function (response) {
         if (response.status === 200) {
@@ -16,6 +28,9 @@ angular.module('myapp')
         }
       };
 
-      users.addNewUser(user, handleResponse);
+      users.loginUser({
+        email: $scope.email,
+        password: $scope.password,
+      }, handleResponse);
     };
   });
