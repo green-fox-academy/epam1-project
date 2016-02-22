@@ -34,10 +34,10 @@ angular.module('myapp')
       }, handleResponse);
     };
   })
-  .controller('ListCtrl', function ($scope, users) {
+  .controller('ListUsersCtrl', function ($scope, users) {
     $scope.getUsers = function () {
       return users.getAllUser();
     };
 
-    users.fetchAllUser();
+    users.fetchAllUsers();
   });
