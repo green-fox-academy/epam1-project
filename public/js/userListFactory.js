@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myapp')
-  .factory('users', function ($http) {
+  .factory('usersList', function ($http) {
     var listOfUsers = [];
 
     function addNewUser(newUser, handleResponse) {

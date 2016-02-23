@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myapp')
-  .controller('LogInCtrl', function ($scope, $state, users) {
+  .controller('LogInCtrl', function ($scope, $state, usersList) {
     $scope.userLogin = function () {
 
       var handleResponse = function (response) {
@@ -12,7 +12,7 @@ angular.module('myapp')
         }
       };
 
-      users.loginUser({
+      usersList.loginUser({
         email: $scope.email,
         password: $scope.password,
       }, handleResponse);

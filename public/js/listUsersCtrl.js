@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('myapp')
-  .controller('ListUsersCtrl', function ($scope, users) {
+  .controller('ListUsersCtrl', function ($scope, usersList) {
     $scope.getUsers = function () {
-      return users.getAllUser();
+      return usersList.getAllUser();
     };
 
-    users.fetchAllUsers();
+    usersList.fetchAllUsers();
   });
