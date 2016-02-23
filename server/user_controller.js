@@ -5,6 +5,7 @@ var logger = require('./log.js')();
 function UserController(queries) {
   var _this = this;
   this.logger = logger;
+
   this.registerUser = function (request, response) {
     queries.registNewUser(request.body, function (err, result) {
       _this.handleResponse(err, result, response);
@@ -14,6 +15,15 @@ function UserController(queries) {
   this.getAllUser = function (request, response) {
     queries.getAllUserFromDB(function (err, result) {
       _this.handleResponse(err, result, response);
+    });
+  };
+
+  this.findUser = function (email, cb) {
+    queries.findUser(email, function (err, result) {
+      if (err) return cb(err);
+      var foundUser = result.rows[0];
+      if (foundUser) return cb(null, foundUser);
+      return cb(null, null);
     });
   };
 
