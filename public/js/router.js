@@ -13,6 +13,7 @@ angular.module('myapp')
         url: '/register',
         templateUrl: './templates/register.html',
         pageTitle: 'Register',
+        controller: 'RegisterCtrl',
       })
       .state('login', {
         url: '/login',
@@ -23,6 +24,7 @@ angular.module('myapp')
         url: '/home',
         templateUrl: './templates/home.html',
         pageTitle: 'Home',
+        controller: 'HomeCtrl',
       })
       .state('users', {
         url: '/users',
