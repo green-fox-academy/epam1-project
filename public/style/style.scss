@@ -50,7 +50,7 @@ h1 {
   padding-left: 20px;
 }
 
-.button, .registerButton, .loginButton {
+.button, .registerButton, .loginButton, .submitButton {
   background-color: $blue;
   border: {
     radius: $borderRadius;
@@ -176,7 +176,7 @@ input {
   left: 50%;
   position: fixed;
   text-align: center;
-  top: 30%;
+  top: 180px;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
