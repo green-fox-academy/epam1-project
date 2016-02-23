@@ -2,7 +2,7 @@
 
 angular.module('myapp')
   .controller('RegisterCtrl', function ($scope, $state, user) {
-    if (user.isloggedIn()) {
+    if (user.isLoggedIn()) {
       $state.go('home');
     }
 
