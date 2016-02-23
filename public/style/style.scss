@@ -66,7 +66,7 @@ button {
   &:hover {cursor: pointer;}
 }
 
-.buttons, .register, .login {
+.buttons, .register, .login, {
   justify-content: center;
   left: 50%;
   position: fixed;
@@ -166,4 +166,26 @@ input {
   position: absolute;
   text-transform: uppercase;
   top: 300px;
+}
+
+.userListTable {
+  border-collapse: collapse;
+  width: 50%;
+  text-align: center;
+  justify-content: center;
+  left: 50%;
+  position: fixed;
+  text-align: center;
+  top: 30%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+th {
+  border-bottom: 1px solid $darkgrey;
+  padding: 0px;
+}
+
+td {
+  text-align: left;
 }

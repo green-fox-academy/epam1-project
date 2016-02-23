@@ -23,8 +23,18 @@ function UserQueries(connection) {
     );
   };
 
-  this.getAllUserFromDB = function (callback) {
-    connection.sendQuery('SELECT * FROM USERS', callback);
+  this.updateUserAdminStatus = function (params, callback) {
+    connection.sendQuery(
+      SQL`
+      UPDATE users SET admin = ${params.admin}
+      WHERE email = ${params.email}
+      RETURNING email, admin`,
+      callback
+    );
+  };
+
+  this.getUsers = function (callback) {
+    connection.sendQuery('SELECT id, email, admin FROM USERS', callback);
   };
 }
 

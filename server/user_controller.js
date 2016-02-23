@@ -12,8 +12,14 @@ function UserController(queries) {
     });
   };
 
+  this.updateUserAdmin = function (request, response) {
+    queries.updateUserAdminStatus(request.body, function (err, result) {
+      _this.handleResponse(err, result, response);
+    });
+  };
+
   this.getAllUser = function (request, response) {
-    queries.getAllUserFromDB(function (err, result) {
+    queries.getUsers(function (err, result) {
       _this.handleResponse(err, result, response);
     });
   };

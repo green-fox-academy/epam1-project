@@ -30,4 +30,27 @@ describe('User query', function () {
       callback);
     });
   });
+
+  describe('test getUsers query', function () {
+    it('tracks all the arguments of its calls', function () {
+      userQueries.getUsers(callback);
+
+      expect(connection.sendQuery).toHaveBeenCalledWith(
+      'SELECT id, email, admin FROM USERS',
+      callback);
+    });
+  });
+
+  describe('test updateUserAdminStatus query', function () {
+    it('tracks all the arguments of its calls', function () {
+      var params = { email: 'test@test.com', admin: true };
+      userQueries.updateUserAdminStatus(params, callback);
+
+      expect(connection.sendQuery).toHaveBeenCalledWith(SQL`
+      UPDATE users SET admin = ${params.admin}
+      WHERE email = ${params.email}
+      RETURNING email, admin`,
+      callback);
+    });
+  });
 });
