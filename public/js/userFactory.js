@@ -1,8 +1,18 @@
 'use strict';
 
 angular.module('myapp')
-  .factory('users', function ($http) {
-    var listOfUsers = [];
+  .factory('user', function ($http) {
+    var currentUser = {
+      email: '',
+      admin: false,
+      loggedIn: false,
+    };
+
+    function setUserValues(values, isLoggedIn) {
+      currentUser.email = values.email;
+      currentUser.admin = values.admin;
+      currentUser.loggedIn = isLoggedIn;
+    }
 
     function addNewUser(newUser, handleResponse) {
       $http.post('/api/register', newUser).then(function (response) {
@@ -23,20 +33,10 @@ angular.module('myapp')
       });
     }
 
-    function getAllUser() {
-      return listOfUsers;
-    }
-
-    function fetchAllUsers() {
-      $http.get('/api/users').then(function (response) {
-        listOfUsers = response.data;
-      });
-    }
-
     return {
+      currentUser: currentUser,
+      setUserValues: setUserValues,
       addNewUser: addNewUser,
       loginUser: loginUser,
-      getAllUser: getAllUser,
-      fetchAllUsers: fetchAllUsers,
     };
   });

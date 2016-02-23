@@ -32,4 +32,40 @@ describe('Controller', function () {
         });
     });
   });
+
+  describe('GET /api/users', function () {
+    it('should respond with json', function (done) {
+      request(app)
+        .get('/api/users')
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end(function (err, res) {
+          if (err) {
+            done.fail(err);
+          } else {
+            expect(res.body).toEqual([{}]);
+            done();
+          }
+        });
+    });
+  });
+
+  describe('PUT api/users', function () {
+    it('should respond with json', function (done) {
+      var update = { email: 'smth@fox.com', admin: true };
+      request(app)
+        .put('/api/users')
+        .send(update)
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end(function (err, res) {
+          if (err) {
+            done.fail(err);
+          } else {
+            expect(res.body).toEqual([{}]);
+            done();
+          }
+        });
+    });
+  });
 });

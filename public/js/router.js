@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myapp', ['ui.router'])
+angular.module('myapp')
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
     $stateProvider
@@ -13,6 +13,7 @@ angular.module('myapp', ['ui.router'])
         url: '/register',
         templateUrl: './templates/register.html',
         pageTitle: 'Register',
+        controller: 'RegisterCtrl',
       })
       .state('login', {
         url: '/login',
@@ -23,6 +24,7 @@ angular.module('myapp', ['ui.router'])
         url: '/home',
         templateUrl: './templates/home.html',
         pageTitle: 'Home',
+        controller: 'HomeCtrl',
       })
       .state('users', {
         url: '/users',

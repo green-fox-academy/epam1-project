@@ -44,6 +44,8 @@
     "path": "^0.12.7",
     "pg": "^4.4.4",
     "sql-template-strings": "^1.1.2",
-    "newrelic": "^1.25.3"
+    "newrelic": "^1.25.3",
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0"
   }
 }

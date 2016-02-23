@@ -1,0 +1,23 @@
+'use strict';
+
+angular.module('myapp')
+  .controller('RegisterCtrl', function ($scope, $state, user) {
+    if (user.currentUser.loggedIn) {
+      $state.go('home');
+    }
+
+    $scope.addUser = function () {
+      var handleResponse = function (response) {
+        if (response.status === 200) {
+          $state.go('login');
+        } else {
+          $scope.Error = response.statusText;
+        }
+      };
+
+      user.addNewUser({
+        email: $scope.email,
+        password: $scope.password,
+      }, handleResponse);
+    };
+  });

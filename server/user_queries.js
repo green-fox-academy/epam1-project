@@ -14,6 +14,15 @@ function UserQueries(connection) {
     );
   };
 
+  this.findUser = function (param, callback) {
+    connection.sendQuery(
+      SQL`
+      SELECT id, email, password, admin FROM users
+      WHERE email=${param}`,
+      callback
+    );
+  };
+
   this.updateUserAdminStatus = function (params, callback) {
     connection.sendQuery(
       SQL`
