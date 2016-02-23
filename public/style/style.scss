@@ -50,7 +50,7 @@ h1 {
   padding-left: 20px;
 }
 
-button {
+.button, .registerButton, .loginButton {
   background-color: $blue;
   border: {
     radius: $borderRadius;
@@ -182,10 +182,35 @@ input {
 }
 
 th {
-  border-bottom: 1px solid $darkgrey;
+  border-bottom: 0.2px solid $darkgrey;
   padding: 0px;
+  padding-bottom: 10px;
 }
 
 td {
+  padding-top: 10px;
+}
+
+
+.userEmail, .tableHeadEmail {
+  color: $darkgrey;
   text-align: left;
+}
+
+.userStatus, .tableHeadRole {
+  color: $darkgrey;
+  font-size: $fontSize;
+  text-align: right;
+}
+
+.userStatus {
+  color:  $blue;
+}
+
+.pen {
+  visibility: hidden;;
+}
+
+tr:hover .pen {
+  visibility: visible;
 }
