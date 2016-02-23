@@ -24,7 +24,7 @@ angular.module('myapp')
         if (response.status === 200) {
           $state.go('home');
         } else {
-          $scope.Error = response.statusText;
+          $scope.Error = response.data;
         }
       };
 
