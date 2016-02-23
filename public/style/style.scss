@@ -170,19 +170,15 @@ input {
 
 .userListTable {
   border-collapse: collapse;
-  width: 50%;
-  text-align: center;
-  justify-content: center;
-  left: 50%;
-  position: fixed;
-  text-align: center;
-  top: 180px;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  font-family: 'Lato';
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  min-width: 500px;
 }
 
 th {
-  border-bottom: 0.2px solid $darkgrey;
+  border-bottom: 1px solid $darkgrey;
   padding: 0px;
   padding-bottom: 10px;
 }
