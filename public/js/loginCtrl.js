@@ -14,6 +14,7 @@ angular.module('myapp')
           $state.go('home');
         } else {
           $scope.Error = response.data;
+          $scope.password = '';
         }
       };
 

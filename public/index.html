@@ -15,7 +15,7 @@
       <h1 class="title"> Interviewer </h1>
       <div class="navbar" ng-controller="NavbarCtrl">
         <a ui-sref="users" ng-if="user.isAdmin()">users</a>
-        <a href="">log out</a>
+        <a href="" ng-if="user.isLoggedIn()" ng-click="logoutUser()">log out</a>
       </div>
     </header>
     <div ui-view></div>
