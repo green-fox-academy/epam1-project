@@ -81,8 +81,15 @@ function UserController(queries) {
     }
   };
 
-  this.loggedInStatus = function (req, res) {
-    res.status(200).send(req.isAuthenticated());
+  this.getLoggedInUser = function (req, res) {
+    if (req.isAuthenticated()) {
+      res.status(200).send({
+        email: req.user.email,
+        admin: req.user.admin,
+      });
+    } else {
+      res.status(204).send('No user in session');
+    }
   };
 
 }

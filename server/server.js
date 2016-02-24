@@ -42,7 +42,7 @@ function createServer(connection) {
   app.get('/api/users', userController.getAllUser);
   app.put('/api/users', userController.updateUserAdmin);
   app.post('/api/register', userController.registerUser);
-  app.get('/api/user/isloggedin', userController.loggedInStatus);
+  app.get('/api/user', userController.getLoggedInUser);
   app.get('/api/logout', userController.sessionLogout);
 
   app.post('/api/login', function (req, res, next) {
@@ -54,8 +54,8 @@ function createServer(connection) {
           if (err) return next(err);
           return res.status(200).json({
             email: user.email,
-            id: user.id,
-            admin: user.admin, });
+            admin: user.admin,
+          });
         });
       } else {
         res.status(401).send(info);
