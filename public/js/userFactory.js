@@ -28,6 +28,10 @@ angular.module('myapp')
       return currentUser.admin;
     }
 
+    function getEmail() {
+      return currentUser.email;
+    }
+
     function addNewUser(newUser, handleResponse) {
       $http.post('/api/register', newUser).then(function (response) {
         handleResponse(response);
@@ -58,10 +62,10 @@ angular.module('myapp')
     }
 
     return {
-      currentUser: currentUser,
       setUserValues: setUserValues,
       isLoggedIn: isLoggedIn,
       isAdmin: isAdmin,
+      getEmail: getEmail,
       addNewUser: addNewUser,
       loginUser: loginUser,
       logoutUser: logoutUser,
