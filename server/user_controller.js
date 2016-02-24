@@ -33,6 +33,15 @@ function UserController(queries) {
     });
   };
 
+  this.sessionLogout = function (req, res) {
+    if (!req.isAuthenticated()) {
+      res.status(500).send('Nobody logged in');
+    } else {
+      req.logout();
+      res.status(200).send('Successful logout');
+    }
+  };
+
   this.handleResponse = function (err, result, response) {
     if (err) {
       this.logger.message('error', 'DATABASE CONNECTION ERROR');

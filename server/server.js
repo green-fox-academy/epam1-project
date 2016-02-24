@@ -89,14 +89,7 @@ function createServer(connection) {
     })(req, res, next);
   });
 
-  app.get('/api/logout', function (req, res) {
-    if (!req.isAuthenticated()) {
-      res.status(500).send('Nobody logged in');
-    } else {
-      req.logout();
-      res.status(200).send('Successful logout');
-    }
-  });
+  app.get('/api/logout', userController.sessionLogout);
 
   return app;
 }
