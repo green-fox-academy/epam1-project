@@ -6,5 +6,5 @@ angular.module('myapp')
       $state.go('login');
     }
 
-    $scope.loggedInUser = user.currentUser;
+    $scope.user = user;
   });
