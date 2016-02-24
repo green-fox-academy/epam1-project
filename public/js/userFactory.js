@@ -14,6 +14,10 @@ angular.module('myapp')
       currentUser.loggedIn = isLoggedIn;
     }
 
+    function isLoggedIn() {
+      return currentUser.loggedIn;
+    }
+
     function addNewUser(newUser, handleResponse) {
       $http.post('/api/register', newUser).then(function (response) {
         handleResponse(response);
@@ -36,6 +40,7 @@ angular.module('myapp')
     return {
       currentUser: currentUser,
       setUserValues: setUserValues,
+      isLoggedIn: isLoggedIn,
       addNewUser: addNewUser,
       loginUser: loginUser,
     };
