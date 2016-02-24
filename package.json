@@ -39,13 +39,15 @@
   "dependencies": {
     "angular-ui-router": "^0.2.18",
     "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "newrelic": "^1.25.3",
     "npm": "^3.7.2",
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "pg": "^4.4.4",
-    "sql-template-strings": "^1.1.2",
-    "newrelic": "^1.25.3",
-    "passport": "^0.2.2",
-    "passport-local": "^1.0.0"
+    "sql-template-strings": "^1.1.2"
   }
 }
