@@ -44,7 +44,6 @@ function createServer(connection) {
   passport.deserializeUser(function (email, done) {
     userController.findUser(email, function (err, user) {
       done(err, user);
-      console.log(err);
     });
   });
 
