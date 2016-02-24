@@ -3,6 +3,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
+var passport = require('passport');
+var Strategy = require('passport-local').Strategy;
 
 var HeartQuery = require('./heartbeat/heartbeat-query.js');
 var HeartBeat = require('./heartbeat/heartbeat.js');
@@ -11,8 +13,6 @@ var UserQueries = require('./user_queries.js');
 var LogController = require('./log_controller.js');
 
 function createServer(connection) {
-  var passport = require('passport');
-  var Strategy = require('passport-local').Strategy;
   var heartQuery = new HeartQuery(connection);
   var userQueries = new UserQueries(connection);
   var heartController = new HeartBeat(heartQuery);
@@ -22,30 +22,11 @@ function createServer(connection) {
   passport.use(new Strategy({
     usernameField: 'email',
     passwordField: 'password',
-  },
-  function (username, password, done) {
-    userController.findUser(username, function (err, user) {
-      if (err) {
-        return done(err, false, 'Connection error');
-      } else if (!user) {
-        return done(null, false, 'Incorrect username');
-      } else if (user.password !== password) {
-        return done(null, false, 'Incorrect password');
-      } else {
-        return done(null, user);
-      }
-    });
-  }));
+  }, userController.authenticateUser));
 
-  passport.serializeUser(function (user, cb) {
-    cb(null, user.email);
-  });
+  passport.serializeUser(userController.serialize);
 
-  passport.deserializeUser(function (email, done) {
-    userController.findUser(email, function (err, user) {
-      done(err, user);
-    });
-  });
+  passport.deserializeUser(userController.deserialize);
 
   var app = express();
   app.use(logController.logRequest);
