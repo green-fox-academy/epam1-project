@@ -12,6 +12,7 @@ angular.module('myapp')
           $state.go('login');
         } else {
           $scope.Error = response.statusText;
+          $scope.password = '';
         }
       };
 
