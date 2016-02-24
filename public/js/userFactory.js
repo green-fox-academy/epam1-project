@@ -14,12 +14,22 @@ angular.module('myapp')
       currentUser.loggedIn = isLoggedIn;
     }
 
+    function resetUser() {
+      currentUser.email = '';
+      currentUser.admin = false;
+      currentUser.loggedIn = false;
+    }
+
     function isLoggedIn() {
       return currentUser.loggedIn;
     }
 
     function isAdmin() {
       return currentUser.admin;
+    }
+
+    function getEmail() {
+      return currentUser.email;
     }
 
     function addNewUser(newUser, handleResponse) {
@@ -41,12 +51,23 @@ angular.module('myapp')
       });
     }
 
+    function logoutUser(done) {
+      $http.get('/api/logout').then(function () {
+        resetUser();
+        done(null);
+      }, function (error) {
+
+        done(error);
+      });
+    }
+
     return {
-      currentUser: currentUser,
       setUserValues: setUserValues,
       isLoggedIn: isLoggedIn,
       isAdmin: isAdmin,
+      getEmail: getEmail,
       addNewUser: addNewUser,
       loginUser: loginUser,
+      logoutUser: logoutUser,
     };
   });
