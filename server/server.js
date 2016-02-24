@@ -44,6 +44,7 @@ function createServer(connection) {
   passport.deserializeUser(function (email, done) {
     userController.findUser(email, function (err, user) {
       done(err, user);
+      console.log(err);
     });
   });
 
@@ -90,8 +91,12 @@ function createServer(connection) {
   });
 
   app.get('/api/logout', function (req, res) {
-    req.logout();
-    res.status(200).send('Successful logout');
+    if (!req.isAuthenticated()) {
+      res.status(500).send('Nobody logged in');
+    } else {
+      req.logout();
+      res.status(200).send('Successful logout');
+    }
   });
 
   return app;
