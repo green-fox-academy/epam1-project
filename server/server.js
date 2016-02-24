@@ -89,6 +89,11 @@ function createServer(connection) {
     })(req, res, next);
   });
 
+  app.get('/api/logout', function (req, res) {
+    req.logout();
+    res.status(200).send('Successful logout');
+  });
+
   return app;
 }
 
