@@ -70,12 +70,23 @@ angular.module('myapp')
       });
     }
 
+    function authenticateUser(done) {
+      $http.get('/api/user').then(function (response) {
+        if (response.status === 200) {
+          setUserValues(response.data, true);
+        }
+
+        setAuthenticated();
+        done();
+      });
+    }
+
     return {
       setUserValues: setUserValues,
       isLoggedIn: isLoggedIn,
       isAdmin: isAdmin,
       isAuthenticated: isAuthenticated,
-      setAuthenticated: setAuthenticated,
+      authenticateUser: authenticateUser,
       getEmail: getEmail,
       addNewUser: addNewUser,
       loginUser: loginUser,
