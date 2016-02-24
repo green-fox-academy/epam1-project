@@ -3,6 +3,7 @@
 angular.module('myapp')
   .factory('user', function ($http) {
     var currentUser = {
+      isAuthenticated: false,
       email: '',
       admin: false,
       loggedIn: false,
@@ -26,6 +27,14 @@ angular.module('myapp')
 
     function isAdmin() {
       return currentUser.admin;
+    }
+
+    function isAuthenticated() {
+      return currentUser.isAuthenticated;
+    }
+
+    function setAuthenticated() {
+      currentUser.isAuthenticated = true;
     }
 
     function getEmail() {
@@ -65,6 +74,8 @@ angular.module('myapp')
       setUserValues: setUserValues,
       isLoggedIn: isLoggedIn,
       isAdmin: isAdmin,
+      isAuthenticated: isAuthenticated,
+      setAuthenticated: setAuthenticated,
       getEmail: getEmail,
       addNewUser: addNewUser,
       loginUser: loginUser,
