@@ -81,6 +81,10 @@ function UserController(queries) {
     }
   };
 
+  this.loggedInStatus = function (req, res) {
+    res.status(200).send(req.isAuthenticated());
+  };
+
 }
 
 module.exports = UserController;
