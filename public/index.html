@@ -10,9 +10,13 @@
     <link href='https://fonts.googleapis.com/css?family=Oswald|Lato' rel='stylesheet' type='text/css'>
   </head>
   <body ng-app="myapp">
-    <header class="navbar">
+    <header class="mainHeader">
       <a ui-sref="frontpage"><img class="logo" src="https://www.epam.com/content/dam/epam/global/logo_gray-blue_80px.svg" style="height: 38px; width: 107.35px"></a>
-      <h1 class="title"> INTERVIEWER </h1>
+      <h1 class="title"> Interviewer </h1>
+      <div class="navbar">
+        <a href="">users</a>
+        <a href="">log out</a>
+      </div>
     </header>
     <div ui-view></div>
     <script src="./js/main.js"></script>

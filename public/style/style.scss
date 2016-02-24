@@ -14,60 +14,77 @@ $inputWidth: 150px;
 
 $borderRadius: 3px;
 
-html {
-  margin: 0px;
-}
-
-body {
-  margin: auto;
-}
-
-header {
-  background-color: $lightgrey;
-  height: $headerHeight;
-  font-size: $fontSize;
-  font-family: $fontFamilyDefault;
-  margin: 0px;
-  padding: 0px;
-  display: flex;
-  border-bottom: 1px solid $darkgrey;
-}
-
-h1 {
-  font-size: $fontSizeLarge;
-  color: $darkgrey;
-  margin: 0px;
-}
-
-.logo {
-  padding-top: 25px;
-  padding-left: 20px;
-  order: 1;
-}
-
-.title {
-  order: 2;
-  padding-top: 21px;
-  padding-left: 20px;
-}
-
-.button, .registerButton, .loginButton, .submitButton {
-  background-color: $blue;
+@mixin buttonProperties($bGroundColor, $brdRadius, $brdWidth, $fColor, $fFamily, $fSize, $height, $width) {
+  background-color: $bGroundColor;
   border: {
-    radius: $borderRadius;
-    width: 0px;
+    radius: $brdRadius;
+    width: $brdWidth;
   };
-  color: white;
+  color: $fColor;
   font: {
-    family: $fontFamilyDefault;
-    size: $fontSize;
+    family: $fFamily;
+    size: $fSize;
   };
-  height: $buttonHeight;
-  width: $inputWidth;
+  height: $height;
+  width: $width;
   &:hover {cursor: pointer;}
 }
 
-.buttons, .register, .login, {
+html {
+  margin: 0px;
+
+  body {
+    margin: auto;
+  }
+
+  .mainHeader {
+    background-color: $lightgrey;
+    height: $headerHeight;
+    font-size: $fontSize;
+    font-family: $fontFamilyDefault;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    border-bottom: 1px solid $darkgrey;
+
+    h1 {
+      font-size: $fontSizeLarge;
+      color: $darkgrey;
+      margin: 0px;
+      text-transform: uppercase;
+    }
+
+    .logo {
+      padding-top: 25px;
+      padding-left: 20px;
+      order: 1;
+    }
+
+    .title {
+      order: 2;
+      padding-top: 21px;
+      padding-left: 20px;
+    }
+
+    .navbar {
+      color: $darkgrey;
+      font-family: $fontFamilySecondary;
+      position: absolute;
+      padding-right: 25px;
+      right: 20px;
+      top: 28px;
+
+      a, a:visited {
+        color: $darkgrey;
+        text-decoration: none;
+        padding-left: 30px;
+      }
+    }
+  }
+}
+
+
+.frontpage, .register, .login, {
   justify-content: center;
   left: 50%;
   position: fixed;
@@ -75,76 +92,79 @@ h1 {
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-}
-
-.buttons {
-  font-style: $fontFamilyDefault;
-  display: flex;
-}
-
-.registerButton {
-  order: 1;
-}
-
-.middle {
-  color: $darkgrey;
-  font: {
-    style: $fontFamilyDefault;
-    size: 18px;
-  };
-  order: 2;
-  padding: 15px 30px;
-}
-
-.loginButton {
-  order: 3;
-}
-
-a, a:visited {
-  color: $blue;
-  text-decoration: none;
-}
-
-.formlinks {
-  font-family: $fontFamilyDefault;
-  margin-left: 30px;
-}
-
-input {
-  border: {
-    radius: $borderRadius;
-    color: $blue;
-    style: solid;
-    width: 1px;
-  };
-  font-size: $fontSize;
-  height: $inputHeight;
-  margin: 10px;
-  padding-left: 10px;
-  width: 450px;
+  .button, .registerButton, .loginButton, .submitButton {
+    @include buttonProperties($blue, $borderRadius, 0px, white, $fontFamilyDefault, $fontSize, $buttonHeight, $inputWidth);
+  }
 }
 
 .register, .login {
   width: 500px;
+
+  .error-msg-container {
+    background-color: #ED4040;
+    border-radius: $borderRadius;
+    margin: 0px 20px 10px 20px;
+    height: 50px;
+    width: 460px;
+
+    .error-msg {
+      color: white;
+      font-family: $fontFamilyDefault;
+      padding-top: 10px;
+    }
+  }
+
+  input {
+    border: {
+      radius: $borderRadius;
+      color: $blue;
+      style: solid;
+      width: 1px;
+    };
+    font-size: $fontSize;
+    height: $inputHeight;
+    margin: 10px;
+    padding-left: 10px;
+    width: 450px;
+  }
+
+  .submitButton {
+    text-align: center;
+    margin-left: 30px;
+  }
+
+  .formlinks {
+    font-family: $fontFamilyDefault;
+    margin-left: 30px;
+  }
+
+  a, a:visited {
+    color: $blue;
+    text-decoration: none;
+  }
 }
 
-.submitButton {
-  text-align: center;
-  margin-left: 30px;
-}
+.frontpage {
+  font-style: $fontFamilyDefault;
+  display: flex;
 
-.error-msg-container {
-  background-color: #ED4040;
-  border-radius: $borderRadius;
-  margin: 0px 20px 10px 20px;
-  height: 50px;
-  width: 460px;
-}
+  .registerButton {
+    order: 1;
+  }
 
-.error-msg {
-  color: white;
-  font-family: $fontFamilyDefault;
-  padding-top: 10px;
+  .middle {
+    color: $darkgrey;
+    font: {
+      style: $fontFamilyDefault;
+      size: 18px;
+    };
+    order: 2;
+    padding: 15px 30px;
+  }
+
+  .loginButton {
+    order: 3;
+  }
 }
 
 .welcome-page {
@@ -186,38 +206,37 @@ input {
   margin-right: auto;
   margin-top: 50px;
   min-width: 500px;
-}
 
-th {
-  border-bottom: 1px solid $darkgrey;
-  padding: 0px;
-  padding-bottom: 10px;
-}
+  th {
+    border-bottom: 1px solid $darkgrey;
+    padding: 0px;
+    padding-bottom: 10px;
+  }
 
-td {
-  padding-top: 10px;
-}
+  td {
+    padding-top: 10px;
+  }
 
+  .userEmail, .tableHeadEmail {
+    color: $darkgrey;
+    text-align: left;
+  }
 
-.userEmail, .tableHeadEmail {
-  color: $darkgrey;
-  text-align: left;
-}
+  .userStatus, .tableHeadRole {
+    color: $darkgrey;
+    font-size: $fontSize;
+    text-align: right;
+  }
 
-.userStatus, .tableHeadRole {
-  color: $darkgrey;
-  font-size: $fontSize;
-  text-align: right;
-}
+  .userStatus {
+    color:  $blue;
+  }
 
-.userStatus {
-  color:  $blue;
-}
+  .pen {
+    visibility: hidden;;
+  }
 
-.pen {
-  visibility: hidden;;
-}
-
-tr:hover .pen {
-  visibility: visible;
+  tr:hover .pen {
+    visibility: visible;
+  }
 }

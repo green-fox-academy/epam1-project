@@ -1,14 +1,15 @@
-<table class="userListTable" ng-controller='ListUsersCtrl'>
-  <tr>
-    <th class="tableHeadEmail">email address</th>
-    <th class="tableHeadRole">role</th>
-  </tr>
-  <tr ng-repeat='user in getUsers()'>
-    <td class="userEmail"> {{user.email}} </td>
-    <td class="userStatus">
-      <span ng-if="user.admin">admin</span>
-    </td>
-      <td> <button class="penButton"> <img class="pen" src="style/images/pen.svg"> </button> </td>
-    </div>
-  </tr>
-</table>
+<div class="usersTable">
+  <table class="userListTable" ng-controller='ListUsersCtrl'>
+    <tr>
+      <th class="tableHeadEmail">email address</th>
+      <th class="tableHeadRole">role</th>
+    </tr>
+    <tr ng-repeat='user in getUsers()'>
+      <td class="userEmail"> {{user.email}} </td>
+      <td class="userStatus">
+        <span ng-if="user.admin">admin</span>
+      </td>
+      <td><img class="pen" src="style/images/pen.svg"></td>
+    </tr>
+  </table>
+</div>
