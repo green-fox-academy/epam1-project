@@ -37,11 +37,27 @@ function createServer(connection) {
     });
   }));
 
+  passport.serializeUser(function (user, cb) {
+    cb(null, user.email);
+  });
+
+  passport.deserializeUser(function (email, done) {
+    userController.findUser(email, function (err, user) {
+      done(err, user);
+    });
+  });
+
   var app = express();
   app.use(logController.logRequest);
-
   app.use(bodyParser.json());
+  app.use(require('cookie-parser')());
+  app.use(require('express-session')({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+  }));
   app.use(passport.initialize());
+  app.use(passport.session());
 
   var route = path.join(__dirname, '..', 'public');
   app.use(express.static(route));
@@ -51,17 +67,26 @@ function createServer(connection) {
   app.post('/api/register', userController.registerUser);
   app.put('/api/users', userController.updateUserAdmin);
   app.post('/api/log', logController.logFrontendEvent);
+  app.get('/api/user/isloggedin', function (req, res) {
+    res.status(200).send(req.isAuthenticated());
+  });
 
-  app.post('/api/login', function (req, res) {
+  app.post('/api/login', function (req, res, next) {
     passport.authenticate('local', function (err, user, info) {
       if (err) {
         res.status(503).send(info);
       } else if (user) {
-        res.status(200).json({ email: user.email });
+        req.logIn(user, function (err) {
+          if (err) return next(err);
+          return res.status(200).json({
+            email: user.email,
+            id: user.id,
+            admin: user.admin, });
+        });
       } else {
         res.status(401).send(info);
       }
-    })(req, res);
+    })(req, res, next);
   });
 
   return app;
