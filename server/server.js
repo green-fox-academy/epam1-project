@@ -42,26 +42,9 @@ function createServer(connection) {
   app.get('/api/users', userController.getAllUser);
   app.put('/api/users', userController.updateUserAdmin);
   app.post('/api/register', userController.registerUser);
-  app.get('/api/user', userController.getLoggedInUser);
+  app.post('/api/login', userController.loginUser);
   app.get('/api/logout', userController.sessionLogout);
-
-  app.post('/api/login', function (req, res, next) {
-    passport.authenticate('local', function (err, user, info) {
-      if (err) {
-        res.status(503).send(info);
-      } else if (user) {
-        req.logIn(user, function (err) {
-          if (err) return next(err);
-          return res.status(200).json({
-            email: user.email,
-            admin: user.admin,
-          });
-        });
-      } else {
-        res.status(401).send(info);
-      }
-    })(req, res, next);
-  });
+  app.get('/api/user', userController.getLoggedInUser);
 
   return app;
 }

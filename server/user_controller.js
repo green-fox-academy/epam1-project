@@ -1,6 +1,7 @@
 'use strict';
 
 var logger = require('./log.js')();
+var passport = require('passport');
 
 function UserController(queries) {
   var _this = this;
@@ -51,6 +52,24 @@ function UserController(queries) {
         return done(null, user);
       }
     });
+  };
+
+  this.loginUser = function (req, res, next) {
+    passport.authenticate('local', function (err, user, info) {
+      if (err) {
+        res.status(503).send(info);
+      } else if (user) {
+        req.logIn(user, function (err) {
+          if (err) return next(err);
+          return res.status(200).json({
+            email: user.email,
+            admin: user.admin,
+          });
+        });
+      } else {
+        res.status(401).send(info);
+      }
+    })(req, res, next);
   };
 
   this.findUser = function (email, cb) {
