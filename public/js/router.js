@@ -8,6 +8,7 @@ angular.module('myapp')
         url: '/',
         templateUrl: './templates/frontpage.html',
         pageTitle: 'Epam@Interviewer',
+        controller: 'FrontpageCtrl',
       })
       .state('register', {
         url: '/register',
