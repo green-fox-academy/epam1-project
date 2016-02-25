@@ -7,36 +7,46 @@ angular.module('myapp')
       .state('frontpage', {
         url: '/',
         templateUrl: './templates/frontpage.html',
-        pageTitle: 'Epam@Interviewer',
         controller: 'FrontpageCtrl',
+        data: {
+          pageTitle: 'Epam@Interviewer',
+        },
       })
       .state('register', {
         url: '/register',
         templateUrl: './templates/register.html',
-        pageTitle: 'Register',
         controller: 'RegisterCtrl',
+        data: {
+          pageTitle: 'Register',
+        },
       })
       .state('login', {
         url: '/login',
         templateUrl: './templates/login.html',
-        pageTitle: 'Login',
+        data: {
+          pageTitle: 'Login',
+        },
       })
       .state('home', {
         url: '/home',
         templateUrl: './templates/home.html',
-        pageTitle: 'Home',
         controller: 'HomeCtrl',
+        data: {
+          pageTitle: 'Home',
+        },
       })
       .state('users', {
         url: '/users',
         templateUrl: './templates/users.html',
-        pageTitle: 'Users',
+        data: {
+          pageTitle: 'Users',
+        },
       });
   })
   .run(function ($rootScope, $http) {
     $rootScope.$on('$stateChangeStart',
       function (event, toState) {
-        window.document.title = toState.pageTitle;
+        window.document.title = toState.data.pageTitle;
         var logMessage = { level: 'info', toState: toState.url };
         $http.post('/api/log', logMessage);
       });
