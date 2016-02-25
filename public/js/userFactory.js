@@ -2,6 +2,7 @@
 
 angular.module('myapp')
   .factory('user', function ($http) {
+
     var currentUser = {
       isAuthenticated: false,
       email: '',
@@ -16,21 +17,23 @@ angular.module('myapp')
     }
 
     function resetUser() {
-      currentUser.email = '';
-      currentUser.admin = false;
-      currentUser.loggedIn = false;
+      setUserValues({
+        email: '',
+        admin: false,
+      },
+      false);
     }
 
-    function isLoggedIn() {
-      return currentUser.loggedIn;
+    function isAuthenticated() {
+      return currentUser.isAuthenticated;
     }
 
     function isAdmin() {
       return currentUser.admin;
     }
 
-    function isAuthenticated() {
-      return currentUser.isAuthenticated;
+    function isLoggedIn() {
+      return currentUser.loggedIn;
     }
 
     function setAuthenticated() {
@@ -74,6 +77,8 @@ angular.module('myapp')
       $http.get('/api/user').then(function (response) {
         if (response.status === 200) {
           setUserValues(response.data, true);
+        } else {
+          resetUser();
         }
 
         setAuthenticated();
@@ -83,11 +88,11 @@ angular.module('myapp')
 
     return {
       setUserValues: setUserValues,
-      isLoggedIn: isLoggedIn,
-      isAdmin: isAdmin,
       isAuthenticated: isAuthenticated,
-      authenticateUser: authenticateUser,
+      isAdmin: isAdmin,
+      isLoggedIn: isLoggedIn,
       getEmail: getEmail,
+      authenticateUser: authenticateUser,
       addNewUser: addNewUser,
       loginUser: loginUser,
       logoutUser: logoutUser,
