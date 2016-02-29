@@ -6,20 +6,20 @@ angular.module('myapp')
     var currentUser = {
       isAuthenticated: false,
       email: '',
-      admin: false,
-      loggedIn: false,
+      isAdmin: false,
+      isLoggedIn: false,
     };
 
     function setUserValues(values, isLoggedIn) {
       currentUser.email = values.email;
-      currentUser.admin = values.admin;
-      currentUser.loggedIn = isLoggedIn;
+      currentUser.isAdmin = values.admin;
+      currentUser.isLoggedIn = isLoggedIn;
     }
 
     function resetUser() {
       setUserValues({
         email: '',
-        admin: false,
+        isAdmin: false,
       },
       false);
     }
@@ -29,11 +29,11 @@ angular.module('myapp')
     }
 
     function isAdmin() {
-      return currentUser.admin;
+      return currentUser.isAdmin;
     }
 
     function isLoggedIn() {
-      return currentUser.loggedIn;
+      return currentUser.isLoggedIn;
     }
 
     function setAuthenticated() {
